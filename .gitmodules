@@ -1,0 +1,3 @@
+[submodule "actual-server"]
+	path = actual-server
+	url = https://github.com/nfaucher8/actual-server
