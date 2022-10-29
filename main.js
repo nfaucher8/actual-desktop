@@ -26,10 +26,11 @@ app.whenReady().then(() => {
   // If config is null it won't overwrite `width` and `height` and instead the defined keys will be used
 
   let opts = {
-    show: false, 
-    icon: __dirname + '/actual-server/node_modules/@actual-app/web/build/favicon-32x32.png',
-    width: 800, 
+    autoHideMenuBar: true,
     height: 600, 
+    icon: __dirname + '/actual-server/node_modules/@actual-app/web/build/favicon-32x32.png',
+    show: false, 
+    width: 800, 
     ...config.get('winBounds')
   }
   mainWindow = new BrowserWindow(opts)
