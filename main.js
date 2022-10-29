@@ -1,8 +1,16 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
-const Config = require('electron-store')
-const config = new Config()
-const path = require('path')
+const {app, BrowserWindow} = require('electron');
+const Config = require('electron-store');
+const config = new Config();
+const path = require('path');
+const fs = require('fs');
+
+
+fs.copyFile('config.json', 'actual-server/config.json', (err) => {
+  if (err) {
+    console.warn('could not set hostname to 127.0.0.1, server may be exposed over network')
+  }
+});
 
 // This will require actual-server's app.js which will start the server
 // This should maybe be an `await` or `const {actual} = require(...); await actual.run()`
