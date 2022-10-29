@@ -1,0 +1,11 @@
+.DS_Store
+.#*
+config.json
+node_modules
+log
+supervise
+bin/large-sync-data.txt
+user-files
+server-files
+fly.toml
+build/
