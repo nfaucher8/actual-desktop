@@ -14,15 +14,17 @@ require('./actual-server/app')
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-  let windowBounds = config.get('winBounds')
-  console.log(windowBounds)
-  let opts = {show: false, width: 800, height: 600, ...windowBounds}
+  // Get the previous window bounds from the electron-store
+  // If config is null it won't overwrite `width` and `height` and instead the defined keys will be used
+  let opts = {show: false, width: 800, height: 600, ...config.get('winBounds')}
   mainWindow = new BrowserWindow(opts)
   
+  // TODO: The port should be based off the config
   mainWindow.loadURL('http://127.0.0.1:5006')
 
   mainWindow.once('ready-to-show', mainWindow.show);
 
+  // On close save the position and size of the window to electron-store
   mainWindow.on('close', () => {
     config.set('winBounds', mainWindow.getBounds())
   })
