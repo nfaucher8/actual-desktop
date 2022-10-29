@@ -16,7 +16,14 @@ require('./actual-server/app')
 app.whenReady().then(() => {
   // Get the previous window bounds from the electron-store
   // If config is null it won't overwrite `width` and `height` and instead the defined keys will be used
-  let opts = {show: false, width: 800, height: 600, ...config.get('winBounds')}
+
+  let opts = {
+    show: false, 
+    icon: __dirname + '/actual-server/node_modules/@actual-app/web/build/favicon-32x32.png',
+    width: 800, 
+    height: 600, 
+    ...config.get('winBounds')
+  }
   mainWindow = new BrowserWindow(opts)
   
   // TODO: The port should be based off the config
