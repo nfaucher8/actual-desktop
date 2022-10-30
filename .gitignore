@@ -10,3 +10,4 @@ server-files
 fly.toml
 build/
 dist/
+release/builder-effective-config.yaml
