@@ -12,6 +12,8 @@
     "verify": "yarn -s lint && yarn types"
   },
   "build": {
+    "afterAllArtifactBuild": "afterAllArtifactBuild.js",
+    "beforePack": "./beforePack.js",
     "productName": "Actual",
     "appId": "com.actualbudget.desktop",
     "files": [
@@ -19,7 +21,11 @@
       "app.js",
       "main.js",
       "package.json",
-      "load-config.js"
+      "load-config.js",
+      {
+        "from": "./node_modules/@actual-app/web/build/android-chrome-512x512.png",
+        "to": "icon.png"
+      }
     ],
     "win": {
       "target": [
