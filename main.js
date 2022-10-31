@@ -18,7 +18,7 @@ app.whenReady().then(async () => {
   let opts = {
     autoHideMenuBar: true,
     height: 600, 
-    icon: __dirname + '/actual-server/node_modules/@actual-app/web/build/favicon-32x32.png',
+    icon: __dirname + '/node_modules/@actual-app/web/build/favicon-32x32.png',
     show: false, 
     width: 800, 
     ...config.get('winBounds')
