@@ -18,9 +18,19 @@
     "productName": "Actual",
     "appId": "com.actualbudget.desktop",
     "files": [
-      "actual-server/",
       "actual.js",
-      "main.js"
+      "main.js",
+      "actual-server/migrations/",
+      "actual-server/sql/",
+      "actual-server/util/",
+      "actual-server/account-db.js",
+      "actual-server/app-account.js",
+      "actual-server/app-plaid.js",
+      "actual-server/app-sync.js",
+      "actual-server/db.js",
+      "actual-server/load-config.js",
+      "actual-server/sync-full.js",
+      "actual-server/sync-simple.js"
     ],
     "win": {
       "target": [

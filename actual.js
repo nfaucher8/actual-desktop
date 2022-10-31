@@ -4,23 +4,8 @@ module.exports = async () => {
   const actuator = require('express-actuator');
   const bodyParser = require('body-parser');
   const cors = require('cors');
-
-  // ***** Extra imports for custom electron config *****
-  const {app: electronApp} = require('electron');
-  let { join } = require('path');
   
-
-  // ***** Custom "load-config" *****
-  let config = {
-    mode: 'development',
-    port: 5006,
-    hostname: '127.0.0.1',
-    serverFiles: join(electronApp.getPath('userData'),  "server-files"),
-    userFiles: join(electronApp.getPath('userData'), "user-files")
-  };
-  
-  // The env variable always takes precedence
-  config.userFiles = process.env.ACTUAL_USER_FILES || config.userFiles;
+  let config = require('./actual-server/load-config');
 
   const accountApp = require('./actual-server/app-account');
   const syncApp = require('./actual-server/app-sync');
