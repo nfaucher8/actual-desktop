@@ -2,28 +2,18 @@
 const {app, BrowserWindow} = require('electron');
 const Config = require('electron-store');
 const config = new Config();
-const path = require('path');
 const fs = require('fs');
-
-
-fs.copyFile('config.json', 'actual-server/config.json', (err) => {
-  if (err) {
-    console.warn('could not set hostname to 127.0.0.1, server may be exposed over network')
-  }
-});
-
-// This will require actual-server's app.js which will start the server
-// This should maybe be an `await` or `const {actual} = require(...); await actual.run()`
-// Might make a PR for this but for now I'd rather not modify anything within the submodule so
-// the desktop app can easily be updated to the latest version of the server without much hassle
-require('./actual-server/app')
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
   // Get the previous window bounds from the electron-store
   // If config is null it won't overwrite `width` and `height` and instead the defined keys will be used
+
+  // This will require actual-server's app.js which will start the server
+  let actualServer = require('./actual');
+  await actualServer();
 
   let opts = {
     autoHideMenuBar: true,

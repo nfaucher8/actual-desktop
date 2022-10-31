@@ -1,5 +1,6 @@
 {
   "name": "actual-desktop",
+  "author": "actualbudget",
   "version": "22.10.25",
   "license": "MIT",
   "description": "actual desktop app with syncing server",
@@ -18,14 +19,8 @@
     "appId": "com.actualbudget.desktop",
     "files": [
       "actual-server/",
-      "app.js",
-      "main.js",
-      "package.json",
-      "load-config.js",
-      {
-        "from": "./node_modules/@actual-app/web/build/android-chrome-512x512.png",
-        "to": "icon.png"
-      }
+      "actual.js",
+      "main.js"
     ],
     "win": {
       "target": [
