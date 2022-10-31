@@ -6,7 +6,7 @@
   "description": "actual desktop app with syncing server",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
+    "start": "node beforePack && electron . && node afterAllArtifactBuild",
     "lint": "eslint .",
     "build": "electron-builder build",
     "types": "tsc --noEmit --incremental",
