@@ -8,9 +8,20 @@ It's very easy to get started. Clone this repo, install deps, and start it:
 ```
 git clone https://github.com/nfaucher8/actual-desktop.git
 cd actual-desktop
-yarn install
+cd actual-server
+git submodule update
+cd ..
+yarn
 yarn start
 ```
+
+1. Clone the repo
+2. Enter the new directory
+3. Enter the `actual-server` directory
+4. Clone the submodule
+5. Go back to the `actual-desktop` directory
+6. Run `yarn` to install dependencies
+7. Run `yarn start` to start the app
 
 A new application should start and you'll see Actual.
 
@@ -45,12 +56,16 @@ Attempts to build an `armv7l` application for Linux
   - AppImage
 
 ### `yarn build:windows`
-Attempts to build an x64 application for Windows
+Attempts to build an application for Windows
 
-This will output 3 different versions of the built application. A `.msi` installer and `.exe` installer that
+
+This will output different versions of the built application. A `.msi` installer and `.exe` installer that
 can be used to install Actual on a device. A portable `.exe` will also be created, this file can run Actual without having to install it on a device.
 
 - outputs:
-  - MSI Installer
-  - Portable exe
-  - Installer exe
+  - MSI Installer (x64)
+  - Portable exe (x64)
+  - Installer exe (x64)
+  - MSI Installer (ia32)
+  - Portable exe (ia32)
+  - Installer exe (ia32)
