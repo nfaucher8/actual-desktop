@@ -4,6 +4,28 @@ const Config = require('electron-store');
 const config = new Config();
 const fs = require('fs');
 
+
+const createWindow = () => {
+  const opts = {
+    autoHideMenuBar: true,
+    height: 600, 
+    icon: __dirname + '/node_modules/@actual-app/web/build/favicon-32x32.png',
+    show: false, 
+    width: 800, 
+    ...config.get('winBounds')
+  }
+  const mainWindow = new BrowserWindow(opts)
+  
+  // TODO: The port should be based off the config
+  mainWindow.loadURL('http://127.0.0.1:5006')
+
+  mainWindow.once('ready-to-show', mainWindow.show);
+
+  // On close save the position and size of the window to electron-store
+  mainWindow.on('close', () => {
+    config.set('winBounds', mainWindow.getBounds())
+  })
+}
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -15,25 +37,7 @@ app.whenReady().then(async () => {
   let actualServer = require('./actual');
   await actualServer();
 
-  let opts = {
-    autoHideMenuBar: true,
-    height: 600, 
-    icon: __dirname + '/node_modules/@actual-app/web/build/favicon-32x32.png',
-    show: false, 
-    width: 800, 
-    ...config.get('winBounds')
-  }
-  mainWindow = new BrowserWindow(opts)
-  
-  // TODO: The port should be based off the config
-  mainWindow.loadURL('http://127.0.0.1:5006')
-
-  mainWindow.once('ready-to-show', mainWindow.show);
-
-  // On close save the position and size of the window to electron-store
-  mainWindow.on('close', () => {
-    config.set('winBounds', mainWindow.getBounds())
-  })
+  createWindow();
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
