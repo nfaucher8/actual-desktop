@@ -31,7 +31,12 @@ Attempts to build an application for Linux
 Attempts to build an application for MacOS (can only be run on MacOS)
 
 - outputs:
-  - dmg installer
+  - arm64 zipped `.app`
+  - arm64 `.dmg` installer
+  - x64 zipped `/app`
+  - x64 `.dmg` installer
+  - universal zipped `.app`
+  - universal `.dmg` installer
 
 ### `yarn build:pi`
 Attempts to build an `armv7l` application for Linux

@@ -10,7 +10,7 @@
     "build": "electron-builder build",
     "build:all": "yarn build:linux && yarn build:mac && yarn build:pi && yarn build:windows",
     "build:linux": "electron-builder build --linux",
-    "build:mac": "electron-builder build --mac",
+    "build:mac": "electron-builder build --mac --x64 --arm64 --universal",
     "build:pi": "electron-builder build --linux --armv7l",
     "build:windows": "electron-builder build --win --x64"
   },
