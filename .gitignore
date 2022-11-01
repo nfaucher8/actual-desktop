@@ -12,3 +12,5 @@ build/
 dist/
 release/builder-effective-config.yaml
 icon.png
+.idea/
+.yarn/
