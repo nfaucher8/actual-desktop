@@ -9,6 +9,7 @@ It's very easy to get started. Clone this repo, install deps, and start it:
 git clone https://github.com/nfaucher8/actual-desktop.git
 cd actual-desktop
 cd actual-server
+git submodule init
 git submodule update
 cd ..
 yarn
